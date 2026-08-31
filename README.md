@@ -73,7 +73,7 @@ This framework scales without major refactoring due to:
 
 1. **Modular Controllers** - New endpoints get new controller methods; existing tests unaffected
 2. **Provider Pattern** - Central `controllersProvider` manages all dependencies
-3. **Reusable Test Data** - `generatePostPayload()`, `generateUserPayload()` for randomized data
+3. **Reusable Test Data** - `generateDummyJsonValidUser()` for randomized data
 4. **Schema Validation** - One-time schema setup, reused across multiple tests. As an additional step for scalability would be auto-creation of schemas and auto-validation within request.
 5. **Parallel Test Execution** - Jest supports `--maxWorkers` flag for horizontal scaling
 6. **Clear Naming** - Organized by tags (@Task1, @Task2)
