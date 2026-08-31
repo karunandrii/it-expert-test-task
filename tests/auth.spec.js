@@ -1,12 +1,14 @@
 import { controllersProvider } from '../src/lib/controllersProvider.js';
-import { generateDummyJsonValidUser } from '../src/utils/testData.js';
 import { loadYamlSchema, validateSchema } from '../src/utils/schemaValidator.js';
 import { AUTH_SCHEMA_PATH } from '../src/config/globals.js';
 
 describe('@Task2 - POST /auth/login', () => {
     let authController;
 
-    const VALID_USER = generateDummyJsonValidUser();
+    const VALID_USER = {
+        username: 'emilys',
+        password: 'emilyspass'
+    };
 
     beforeAll(() => {
         authController = controllersProvider.getAuthController();

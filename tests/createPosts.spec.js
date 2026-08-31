@@ -10,14 +10,22 @@ describe('@Task1 — POST /posts', () => {
     });
 
     test('should create a post with valid payload', async () => {
-        const payload = { title: 'Test Post Title', userId: 1 };
+        // requires title, body, and userId fields
+        const payload = {
+            title: 'Test Post Title',
+            body: 'Test Post Body',
+            userId: 1,
+        };
         const response = await postController.createPost(payload);
         const schema = loadYamlSchema(POST_SCHEMA_PATH);
         const validation = validateSchema(schema, response.data);
 
+        const { id, title, body } = response.data;
+
         expect(response.status).toBe(201);
-        expect(response.data.id).toBeDefined();
-        expect(response.data.title).toBe(payload.title);
+        expect(id).toBeDefined();
+        expect(title).toBe(payload.title);
+        expect(body).toBe(payload.body);
         expect(validation.valid).toBe(true);
         expect(validation.errors).toHaveLength(0);
     });
